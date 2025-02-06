@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>The eco-design booklet</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preload"
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+        as="style" onload="this.onload=null;this.rel='stylesheet'" />
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-size: 5vmin;
+            font-family: "Noto Sans", serif;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-style: normal;
+            font-variation-settings: "wdth" 100;
+            counter-reset: n;
+        }
+
+        html {
+            scroll-snap-type: y mandatory;
+        }
+
+        section,
+        footer {
+            scroll-snap-align: start;
+            box-sizing: border-box;
+            padding: 1em;
+            height: 100vh;
+            position: relative;
+        }
+
+        section>img {
+            position: absolute;
+            right: 0;
+            top: 10vh;
+            bottom: 10vh;
+            height: 80vh;
+            width: 50vw;
+            object-fit: contain;
+        }
+
+        section:nth-child(odd) {
+            padding-right: calc(50vw + 1em);
+        }
+
+        section:nth-child(even) {
+            background-color: #f0f0f0;
+            padding: 1em 1em 1em calc(50vw + 1em);
+        }
+
+        section:nth-child(even)>img {
+            left: 0;
+            right: auto;
+        }
+
+        .tip {
+            font-size: 80%;
+            background-color: #0000ff20;
+            border-radius: 2em;
+            padding: 1em 2em;
+        }
+
+        .tip p:first-child {
+            margin-top: 0;
+        }
+
+        .tip p:last-child {
+            margin-bottom: 0;
+        }
+
+        h2::before {
+            counter-increment: n;
+            content: counter(n);
+            font-size: 80%;
+            color: white;
+            background-color: #aaaaff;
+            display: inline-grid;
+            place-content: center;
+            width: 1.5em;
+            height: 1.5em;
+            margin-right: 0.5em;
+            text-align: center;
+            border-radius: 50%;
+        }
+
+        a[target="_blank"]:after {
+            content: "↗";
+            font-size: 80%;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <section>
+            <h1>The eco-design booklet for front-end web developers</h1>
+            <p>A memo to reduce the ecological footprint of your website</p>
+            <img loading="lazy" src="./svg/undraw_nature-on-screen.svg">
+        </section>
+        <section>
+            <h2>Use HTTP Compression</h2>
+            <p>Enable gzip or brotli compression on your production server.</p>
+            <div class="tip">
+                <p><i>How to know if compression is enabled ?</i></p>
+                <p>Check the <code>Content-Encoding</code> header in network responses in your browser devtools</p>
+            </div>
+            <img loading="lazy" src="./svg/undraw_file-bundle.svg">
+        </section>
+        <section>
+            <h2>Use Cache</h2>
+            <p>Many layers of cache are available:<br />
+                HTTP cache, Cache API with Service Workers, middlewares,
+                caching on database queries, smarter logic for fetching data client-side...</p>
+            <p>Take any opportunity to avoid useless network requests !</p>
+            <img loading="lazy" src="./svg/undraw_elements.svg">
+        </section>
+        <section>
+            <h2>Make a Progressive Web App</h2>
+            <p>Consider making your webapp a PWA with offline support.</p>
+            <p>This reduces the network requests to their bare minimum, for the best performance and lowest energy
+                consumption.</p>
+            <img loading="lazy" src="./svg/undraw_mobile-web.svg">
+        </section>
+        <section>
+            <h2>Dependency diet</h2>
+            <p>Reduce your amount of dependencies and select packages with few to no dependencies.</p>
+            <div class="tip">
+                <a href="https://bundlephobia.com/" target="_blank">bundlephobia.com</a> let you to quickly see the
+                cost of adding a new npm package to your application.
+            </div>
+            <img loading="lazy" src="./svg/undraw_diet.svg">
+        </section>
+        <section>
+            <h2>Ship less</h2>
+            <p>Use modular imports and tree-shaking to only ship what you need.</p>
+            <p>Minify HTML, CSS and JavaScript within your build process.</p>
+            <p>Bundle your codebase to reduce the amount of HTTP requests needed.</p>
+            <img loading="lazy" src="./svg/undraw_order-delivered.svg">
+        </section>
+        <section>
+            <h2>Compress assets</h2>
+            <p>Optimize media assets using the best compression available: AVIF/WebP for pictures, H.264/WebM for
+                videos, AAC/OGG for audio.</p>
+            <div class="tip">
+                <i>Some recommended tools:</i><br>
+                SVG: <a href="https://github.com/svg/svgo" target="_blank">svgo</a><br>
+                Pictures: <a href="https://github.com/imagemin/imagemin" target="_blank">imagemin</a><br>
+                Video & Audio: <a href="https://ffmpeg.org/" target="_blank">ffmpeg</a>
+            </div>
+            <img loading="lazy" src="./svg/undraw_image-viewer.svg">
+        </section>
+        <section>
+            <h2>Avoid bitmap graphics when possible</h2>
+            <p>Use SVG vectorial images or canvas drawing instead of bitmap formats whenever possible.</p>
+            <div class="tip">
+                <p>SVG are much smaller, more accessible, infinitely scalable without loss of quality, and can be
+                    animated !</p>
+            </div>
+            <img loading="lazy" src="./svg/undraw_pen-tool.svg">
+        </section>
+        <section>
+            <h2>Lazy load</h2>
+            <p>Use <code>loading="lazy"</code> on <code>&lt;img&gt;</code> and <code>&lt;iframe&gt;</code> tags to only
+                load them when the user can actually see them.</p>
+            <p>Preload content only when you detect a user behavior that seems to
+                indicate they really want to see this content next.</p>
+            <img loading="lazy" src="./svg/undraw_loading.svg">
+        </section>
+        <section>
+            <h2>Fine-tune your build</h2>
+            <p>Use browserslist and fine-tuned transpilation to cover as many browsers as possible while adding the
+                fewest amount of polyfills required.</p>
+            <div class="tip">
+                <a href="https://babeljs.io/docs/babel-preset-env" target="_blank">babel-preset-env</a> is a good way to
+                achieve this.
+            </div>
+            <img loading="lazy" src="./svg/undraw_building-blocks.svg">
+        </section>
+        <section>
+            <h2>Memoize</h2>
+            <p>Add memoization to the expensive and frequently called JavaScript functions when possible.</p>
+            <img loading="lazy" src="./svg/undraw_memory-storage.svg">
+            <div class="tip">
+                <p>RAM is cheaper than CPU in most scenarios. Make your functions <i>pure, atomic, generic and
+                        composable</i>
+                    to add memoization more easily.</p>
+            </div>
+        </section>
+        <footer>
+            <p>Learn more</p>
+            <ul>
+                <li><a href="https://web.dev/performance" target="_blank">web.dev/performance</a></li>
+                <li><a href="https://developer.mozilla.org/en-US/docs/Web/Performance"
+                        target="_blank">developer.mozilla.org/en-US/docs/Web/Performance</a></li>
+                <li><a href="https://pwa-cookbook.js.org/" target="_blank">pwa-cookbook.js.org</a></li>
+            </ul>
+            <p>Credits</p>
+            <ul>
+                <li>Made by Sylvain Pollet-Villard as part of the EcoDesign initiative at <a
+                        href="http://worldline.com/" target="_blank">Worldline</a></li>
+                <li>Illustrations by <a href="https://undraw.co/" target="_blank">undraw.co</a></li>
+            </ul>
+        </footer>
+    </main>
+
+    <script>
+        if (navigator.serviceWorker) {
+            navigator.serviceWorker.register('sw.js')
+        }
+    </script>
+</body>
+
+</html>
