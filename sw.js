@@ -27,9 +27,11 @@ this.addEventListener('install', (event) => {
 
 // When a network request sent by the browser is intercepted
 this.addEventListener('fetch', async (event) => {
-    const responseFromCache = await caches.match(event.request) // Search the cache
-    if (responseFromCache) return responseFromCache
-    return fetch(event.request) // Not found, lookup on the network
+    if (/ecosystem-booklet/.test(event.url) && event.request.method === 'GET') {
+        const responseFromCache = await caches.match(event.request) // Search the cache
+        if (responseFromCache) return responseFromCache
+        return fetch(event.request) // Not found, lookup on the network
+    }
 });
 
 // Forceful take-over to push service worker updates
